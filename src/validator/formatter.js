@@ -17,6 +17,6 @@
 
 
 
-module.exports = trim1()
-module.exports = upper()
-module.exports = lower()
+module.exports.tream = trim1()
+module.exports.uppar = upper()
+module.exports.lowar = lower()
