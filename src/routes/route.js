@@ -20,6 +20,7 @@ router.get('/hello', function (req, res) {
     res.send('Hello there!')
 });
 
+<<<<<<< Updated upstream
 router.get('/candidates', function(req, res){
     console.log('Query paramters for this request are '+JSON.stringify(req.query))
     let gender = req.query.gender
@@ -76,9 +77,16 @@ router.get("/sol2", function (req, res) {
   });
 
   
+
+  
  
 
 
 module.exports = app;
+=======
+
+
+
+>>>>>>> Stashed changes
 module.exports = router;
 // adding this comment for no reason
