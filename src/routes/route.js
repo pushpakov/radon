@@ -20,7 +20,6 @@ router.get('/hello', function (req, res) {
     res.send('Hello there!')
 });
 
-<<<<<<< Updated upstream
 router.get('/candidates', function(req, res){
     console.log('Query paramters for this request are '+JSON.stringify(req.query))
     let gender = req.query.gender
@@ -72,21 +71,86 @@ router.get("/sol2", function (req, res) {
     let lastDigit= arr.pop()
     let consecutiveSum= (len + 1) * (firstDigit+ lastDigit ) / 2
     let missingNumber= consecutiveSum - total
+    
    
     res.send(  { data: missingNumber  }  );
   });
 
   
+  router.get("/movies", function(req, res){
+    let movies = ["Rang de basanti","The shining","Lord of the rings","Batman begins"]
+    res.send(  { movies }  );
+});
+
+
+router.get("/movies/:indexNumber", function(req, res){
+    let movies = ["Rang de basanti","The shining","Lord of the rings","Batman begins"]
+    let i =req.params.indexNumber
+    let findeMovie;
+    if ((i - 1)<movies.length){
+        findeMovie=movies[i - 1]
+    }else{
+        findeMovie="use a valid index " + movies.length
+    }
+  
+
+    res.send(findeMovie );
+});
+
+
+router.get("/films", function(req, res){
+    let movies = [{
+        "id" : 1,
+        "name": "The Shining"
+    } ,  {
+        "id": 2,
+        "name": "Incendies"
+       }, {
+        "id": 3,
+        "name": "Rang de Basanti"
+       }, {
+        "id": 4,
+        "name": "Finding Nemo"
+       }]
+       
+  
+
+    res.send( {movies} );
+});
+
+
+router.get("/films/:filmId", function(req, res){
+    let movies = [{
+        "id" : 1,
+        "name": "The Shining"
+    } ,  {
+        "id": 2,
+        "name": "Incendies"
+       }, {
+        "id": 3,
+        "name": "Rang de Basanti"
+       }, {
+        "id": 4,
+        "name": "Finding Nemo"
+       }]
+       
+
+       let i =req.params.filmId
+       let findeMovie;
+       if ((i - 1)<movies.length){
+           findeMovie=movies[i - 1]
+       }else{
+           findeMovie="No movie exists with this id"
+       }
+  
+
+    res.send( {findeMovie} );
+});
 
   
  
 
 
 module.exports = app;
-=======
-
-
-
->>>>>>> Stashed changes
 module.exports = router;
 // adding this comment for no reason
