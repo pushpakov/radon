@@ -8,6 +8,8 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+// mongodb+srv://pushpak:ufcrVSuRGWuWv3rv@pushpak1111.eszed.mongodb.net/pushpak123?retryWrites=true&w=majority
+
 app.use('/', route);
 
 app.listen(process.env.PORT || 3000, function() {
