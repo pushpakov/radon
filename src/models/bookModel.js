@@ -11,13 +11,13 @@ const bookSchema = new mongoose.Schema( {
     },
     year : {
         type : Number,
-        default : 2021
+        default : 2021                        //if year is not mentioned it will be 2021 
     },
     tags: [String],
     authorName: String, 
     totalPages : Number,
-    stockAvailable : Boolean,
+    stockAvailable : Boolean,                  //true or false
 }, { timestamps: true });
 
 
-module.exports = mongoose.model('Book', bookSchema) //books 
+module.exports = mongoose.model('Book', bookSchema)         //books 

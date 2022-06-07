@@ -39,29 +39,10 @@ const bookInYear = async function (req, res) {
 
 
 const particularBooks = async function (req, res) {
-    let filter = {}
-    if (req.body.hasOwnProperty("bookName")) {
-      let book = req.body.bookName
-      filter.bookName = book
-    } else if (req.body.hasOwnProperty("authorName")) {
-      let author = req.body.authorName
-      filter.authorName = author
-    } else if (req.body.hasOwnProperty("tags")) {
-      let tag = req.body.tags
-      filter.tags = tag
-    } else if (req.body.hasOwnProperty("totalPages")) {
-      let page = req.body.totalPages
-      filter.totalPages = page
-    } else if (req.body.hasOwnProperty("year")) {
-      let launchYear = req.body.year
-      filter.year = launchYear
-    } else if (req.body.hasOwnProperty("stockAvailable")) {
-      let stock = req.body.stockAvailable
-      filter.stockAvailable = stock
-    }
-    let particularBooks = await BookModel.find(filter)
+    
+    let particularBooks = await BookModel.find(req.body)
     res.send(particularBooks)
-    console.log(filter)
+    
   }
 
   //getXINRBooks- request to return all books who have an Indian price tag of “100INR” or “200INR” or “500INR” 
