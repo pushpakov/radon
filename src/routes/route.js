@@ -15,5 +15,11 @@ router.get("/updateBookPrice", allController.updateBookPrice)
 
 router.get("/authorsName", allController.authorsName)
 
+// optional
+
+router.get("/bookByAuthorId/:author_id", allController.bookByAuthorId)
+
+router.get("/getAuthorList", allController.authorList)
+
 
 module.exports = router;    

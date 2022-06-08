@@ -15,3 +15,13 @@ You have to replicate the below data in your database. With this in mind, create
         Find the books which costs between 50-100(50,100 inclusive) and respond back with the author names of respective books.. 
         bookModel.find( { price : { $gte: 50}  ,  price: {$lte: 100} } ) // WRONG
         bookModel.find( { price : { $gte: 50, $lte: 100} } ).select({ author_id :1})..run a map(or forEach) loop and get all the authorName corresponding to the authorId’s ( by querying authorModel)
+
+        Optional Problems :
+
+        Write an api GET /books-by-authorid/<Author_Id> (for example /books/1 or /books/2 etc) that returns all the books written by the author with an id <Author_Id>. Only return the names of these books
+
+        Find a list of authors whose are older than 50 years of age with at least one book that has a rating greater than 4. Only include the author’s names and their ages in the response for this api
+
+
+
+

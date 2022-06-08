@@ -47,7 +47,9 @@ const updateBookPrice = async function (req, res) {
 
 const authorsName = async function (req, res) {
     const booksId= await bookModel.find({price: {$gte:50, $lte:100}}).select({author_id:1, _id:0})
-    const id = booksId.map(inp => inp.author_id)
+    const id = booksId.map(function(inp){
+        return inp.author_id
+    })
 
     let temp = []
     for (let i=0; i<id.length; i++) {
@@ -60,8 +62,35 @@ const authorsName = async function (req, res) {
 }
 
 
+// Write an api GET /books-by-authorid/<Author_Id> 
+//(for example /books/1 or /books/2 etc) that returns all the books 
+//written by the author with an id <Author_Id>.
+// Only return the names of these books
+
+const bookByAuthorId = async function (req, res) {
+    let data = req.params.author_id
+    const bookById = await bookModel.find({author_id: data}).select({name:1,_id:0})
+     res.send({msg: bookById})
+}
+
+// Find a list of authors whose are older than 50 years of age
+// with at least one book that has a rating greater than 4.
+// Only include the author’s names and their ages in the response for this api
+
+const authorList = async function (req, res) {
+    let rate = await bookModel.find({ratings:{$gt:4}}).select({author_id:1, _id:0})
+    let id = rate.map(function(element){
+        return element.author_id 
+    })
+    let name = await authorModel.find({$and:[{author_id: id},{age:{$gt:50}}]}).select({author_name:1,age:1,_id:0})
+    res.send({msg:name})
+}
+
+
 module.exports.createBook= createBook
 module.exports.createAuthor= createAuthor
 module.exports.allBooks= allBooks
 module.exports.updateBookPrice= updateBookPrice
 module.exports.authorsName= authorsName
+module.exports.bookByAuthorId= bookByAuthorId
+module.exports.authorList= authorList
