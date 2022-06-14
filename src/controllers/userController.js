@@ -9,7 +9,7 @@ const createUser = async function (req, res) {
   //the second parameter is always the response
   let data = req.body;
   let savedData = await userModel.create(data);
-  res.send({ msg: savedData });
+  res.send({ data: savedData });
 };
 
 // - Write a ***POST api /login** to login a user that takes user details 
@@ -39,6 +39,7 @@ const loginUser = async function (req, res) {
       userId: user._id.toString(),
       batch: "radon",
       organisation: "FunctionUp",
+      // exp: (Date.now()/1000)+ 60*180 
     },
     "functionup-radon"
   );
@@ -75,7 +76,7 @@ const updateUser = async function (req, res) {
   
     let userData = req.body;
     let updatedUser = await userModel.findOneAndUpdate({ _id: userId }, userData);
-    res.send({ status: updatedUser, data: updatedUser });
+    res.send({ status: true, data: updatedUser });
   };
 
   //- Write a **DELETE api /users/:userId** that takes the userId in the path params and
@@ -89,9 +90,9 @@ const updateUser = async function (req, res) {
       return res.send({ status: false, msg: "No such user exists" });
     }
     let deletedUser = await userModel.findOneAndUpdate({ _id: userId }, {$set:{isDeleted:true}},{new:true});
-    res.send({ status: deletedUser, data: deletedUser });
+    res.send({ status: true, data: deletedUser });
   
-  };
+  };   
 
 module.exports.createUser = createUser;
 module.exports.getUserData = getUserData;
