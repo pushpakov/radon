@@ -14,10 +14,10 @@ router.post("/login", userController.loginUser)
 //The userId is sent by front end
 //- Add middleware at route level in the routes where applicable.
 
-router.get("/users/:userId", mid.middleAuth, userController.getUserData)
+router.get("/users/:userId", mid.middleAuth, mid.midAuthorisation, userController.getUserData)
 
-router.put("/users/:userId", mid.middleAuth, userController.updateUser)
+router.put("/users/:userId", mid.middleAuth, mid.midAuthorisation, userController.updateUser)
 
-router.delete("/users/:userId", mid.middleAuth, userController.deleteUser)
+router.delete("/users/:userId", mid.middleAuth, mid.midAuthorisation, userController.deleteUser)
 
 module.exports = router;
