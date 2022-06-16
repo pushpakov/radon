@@ -17,6 +17,8 @@ const middleAuth = function (req, res,next) {
     next();
   };
 
+  //Authorisation Midleware :-
+
   const midAuthorisation = async function (req, res, next){
 
     let token = req.headers["x-Auth-token"];
